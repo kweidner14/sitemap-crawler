@@ -170,7 +170,7 @@ class SitemapCrawler:
 
 def main():
     """Main execution function."""
-    BASE_URL = ""
+    BASE_URL = "https://fullframeinsurance.com"
     SITEMAP_INDEX_URL = "sitemap_index.xml"
     OUTPUT_FILE = "extracted_urls.csv"
 
