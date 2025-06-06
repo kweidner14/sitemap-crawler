@@ -78,8 +78,6 @@ class SitemapCrawler:
                 url_data.append({
                     'url': loc,
                     'last_modified': self._extract_text(url_elem.find(f'{prefix}lastmod', namespace)),
-                    'change_frequency': self._extract_text(url_elem.find(f'{prefix}changefreq', namespace)),
-                    'priority': self._extract_text(url_elem.find(f'{prefix}priority', namespace)),
                     'source_sitemap': source
                 })
 
@@ -131,7 +129,7 @@ class SitemapCrawler:
         sorted_data = sorted(url_data, key=lambda x: x['url'])
 
         with open(filename, 'w', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ['url', 'last_modified', 'change_frequency', 'priority', 'source_sitemap']
+            fieldnames = ['url', 'last_modified', 'source_sitemap']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(sorted_data)
@@ -170,7 +168,7 @@ class SitemapCrawler:
 
 def main():
     """Main execution function."""
-    BASE_URL = "https://fullframeinsurance.com"
+    BASE_URL = ""
     SITEMAP_INDEX_URL = "sitemap_index.xml"
     OUTPUT_FILE = "extracted_urls.csv"
 
